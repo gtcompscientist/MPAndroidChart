@@ -16,6 +16,10 @@ public abstract class DemoBase extends FragmentActivity {
             "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"
     };
 
+    protected float[] mMonthPoints = new float[] {
+            1f, 2f, 3f, 4f, 5f, 6f, 7f, 8f, 9f, 10f, 11f, 12f
+    };
+
     protected String[] mParties = new String[] {
             "Party A", "Party B", "Party C", "Party D", "Party E", "Party F", "Party G", "Party H",
             "Party I", "Party J", "Party K", "Party L", "Party M", "Party N", "Party O", "Party P",
@@ -23,6 +27,9 @@ public abstract class DemoBase extends FragmentActivity {
             "Party Y", "Party Z"
     };
 
+    protected float[] mPartyPoints = new float[] {
+            1f, 2f, 3f, 4f, 5f, 6f, 7f, 8f, 9f, 10f, 11f, 12f, 13f, 14f, 15f, 16f, 17f, 18f, 19f, 20f, 21f, 22f, 23f, 24f, 25f, 26f
+    };
     @Override
     public void onBackPressed() {
         super.onBackPressed();

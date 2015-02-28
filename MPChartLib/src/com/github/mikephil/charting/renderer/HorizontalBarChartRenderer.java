@@ -55,7 +55,7 @@ public class HorizontalBarChartRenderer extends BarChartRenderer {
     
     @Override
     public float[] getTransformedValues(Transformer trans, ArrayList<BarEntry> entries, int dataSetIndex) {       
-        return trans.generateTransformedValuesHorizontalBarChart(entries, dataSetIndex, mChart.getBarData(), mAnimator.getPhaseY());
+        return trans.generateTransformedValuesHorizontalBarChart(entries, mChart.getBarData().getXPoints(), dataSetIndex, mChart.getBarData(), mAnimator.getPhaseY());
     }
     
     @Override

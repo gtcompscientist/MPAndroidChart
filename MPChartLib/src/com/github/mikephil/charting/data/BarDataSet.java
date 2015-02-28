@@ -19,6 +19,12 @@ public class BarDataSet extends BarLineScatterCandleDataSet<BarEntry> {
     /** the color used for drawing the bar shadows */
     private int mBarShadowColor = Color.rgb(215, 215, 215);
 
+    /** the width of the drawn data lines */
+    private float mBarOutlineWidth = 0f;
+
+    /** the color used for drawing the bar outline */
+    private int mBarOutlineColor = Color.TRANSPARENT;
+
     /** the alpha value used to draw the highlight indicator bar */
     private int mHighLightAlpha = 120;
 
@@ -57,6 +63,8 @@ public class BarDataSet extends BarLineScatterCandleDataSet<BarEntry> {
         copied.mStackSize = mStackSize;
         copied.mBarSpace = mBarSpace;
         copied.mBarShadowColor = mBarShadowColor;
+        copied.mBarOutlineColor = mBarOutlineColor;
+        copied.mBarOutlineWidth = mBarOutlineWidth;
         copied.mStackLabels = mStackLabels;
         copied.mHighLightColor = mHighLightColor;
         copied.mHighLightAlpha = mHighLightAlpha;
@@ -203,4 +211,41 @@ public class BarDataSet extends BarLineScatterCandleDataSet<BarEntry> {
     public String[] getStackLabels() {
         return mStackLabels;
     }
+
+    /**
+     * returns the width of the bar outline
+     *
+     * @return
+     */
+    public float getBarOutlineWidth() {
+        return mBarOutlineWidth;
+    }
+
+    /**
+     * returns the width of the bar outline
+     *
+     * @param width
+     */
+    public void setBarOutlineWidth(float width) {
+        mBarOutlineWidth = width;
+    }
+
+    /**
+     * returns the color of the bar outline
+     *
+     * @return
+     */
+    public int getBarOutlineColor() {
+        return mBarOutlineColor;
+    }
+
+    /**
+     * sets the color of the bar outline
+     *
+     * @param color
+     */
+    public void setBarOutlineColor(int color) {
+        mBarOutlineColor = color;
+    }
+
 }

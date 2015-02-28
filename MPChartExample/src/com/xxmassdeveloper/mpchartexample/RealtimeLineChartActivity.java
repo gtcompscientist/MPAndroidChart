@@ -69,7 +69,7 @@ public class RealtimeLineChartActivity extends DemoBase implements
 
         // modify the legend ...
         // l.setPosition(LegendPosition.LEFT_OF_CHART);
-        l.setForm(LegendForm.LINE);
+        l.setForm(0, LegendForm.LINE);
         l.setTypeface(tf);
         l.setTextColor(Color.WHITE);
 
@@ -124,7 +124,7 @@ public class RealtimeLineChartActivity extends DemoBase implements
             }
 
             // add a new x-value first
-            data.addXValue(mMonths[data.getXValCount() % 12] + " " + (year + data.getXValCount() / 12));
+            data.addXValue(mMonths[data.getXValCount() % 12] + " " + (year + data.getXValCount() / 12), data.getXValCount());
             data.addEntry(new Entry((float) (Math.random() * 40) + 40f, set.getEntryCount()), 0);
 
             // let the chart know it's data has changed

@@ -280,7 +280,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleData<? exte
 
         Log.i(LOG_TAG, "minLeft: " + minLeft + ", maxLeft: " + maxLeft);
 
-        mXChartMax = mData.getXVals().size() - 1;
+        mXChartMax = mData.getXPoints().get(mData.getXPointCount() - 1);
         mDeltaX = Math.abs(mXChartMax - mXChartMin);
 
         mAxisLeft.mAxisMaximum = !Float.isNaN(mAxisLeft.getAxisMaxValue()) ? mAxisLeft
@@ -387,7 +387,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleData<? exte
     @Override
     protected float[] getMarkerPosition(Entry e, int dataSetIndex) {
 
-        float xPos = e.getXIndex();
+        float xPos = getData().getXPoints().get(e.getXIndex());
 
         if (this instanceof BarChart) {
 
@@ -400,6 +400,10 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleData<? exte
                     / 2f;
 
             xPos += x;
+        }
+
+        if (this instanceof LineChart) {
+            xPos = mData.getXPoints().get(e.getXIndex());
         }
 
         // position of the marker depends on selected value index and value
@@ -637,7 +641,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleData<? exte
             return null;
 
         float[] vals = new float[] {
-                e.getXIndex(), e.getVal()
+                mData.getXPoints().get(e.getXIndex()), e.getVal()
         };
 
         if (this instanceof BarChart) {

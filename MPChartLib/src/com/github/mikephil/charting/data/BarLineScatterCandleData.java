@@ -15,19 +15,19 @@ public abstract class BarLineScatterCandleData<T extends BarLineScatterCandleDat
         super();
     }
     
-    public BarLineScatterCandleData(ArrayList<String> xVals) {
-        super(xVals);
+    public BarLineScatterCandleData(ArrayList<String> xVals, ArrayList<Float> xPoints) {
+        super(xVals, xPoints);
     }
     
-    public BarLineScatterCandleData(String[] xVals) {
-        super(xVals);
+    public BarLineScatterCandleData(String[] xVals, float[] xPoints) {
+        super(xVals, xPoints);
     }
 
-    public BarLineScatterCandleData(ArrayList<String> xVals, ArrayList<T> sets) {
-        super(xVals, sets);
+    public BarLineScatterCandleData(ArrayList<String> xVals, ArrayList<Float> xPoints, ArrayList<T> sets) {
+        super(xVals, xPoints, sets);
     }
 
-    public BarLineScatterCandleData(String[] xVals, ArrayList<T> sets) {
-        super(xVals, sets);
+    public BarLineScatterCandleData(String[] xVals, float[] xPoints, ArrayList<T> sets) {
+        super(xVals, xPoints, sets);
     }
 }

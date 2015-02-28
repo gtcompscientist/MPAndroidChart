@@ -45,11 +45,15 @@ public abstract class ChartData<T extends DataSet<? extends Entry>> {
     /** holds all x-values the chart represents */
     protected ArrayList<String> mXVals;
 
+    /** holds the x-points for the chart */
+    protected ArrayList<Float> mXPoints;
+
     /** array that holds all DataSets the ChartData object represents */
     protected ArrayList<T> mDataSets;
 
     public ChartData() {
         mXVals = new ArrayList<String>();
+        mXPoints = new ArrayList<Float>();
         mDataSets = new ArrayList<T>();
     }
 
@@ -58,9 +62,10 @@ public abstract class ChartData<T extends DataSet<? extends Entry>> {
      * up an empty chart without data.
      * 
      * @param xVals
+     * @param xPoints
      */
-    public ChartData(ArrayList<String> xVals) {
-        this.mXVals = xVals;
+    public ChartData(ArrayList<String> xVals, ArrayList<Float> xPoints) {
+        this.mXPoints = xPoints;
         this.mDataSets = new ArrayList<T>();
         init(mDataSets);
     }
@@ -70,9 +75,11 @@ public abstract class ChartData<T extends DataSet<? extends Entry>> {
      * up an empty chart without data.
      * 
      * @param xVals
+     * @param xPoints
      */
-    public ChartData(String[] xVals) {
+    public ChartData(String[] xVals, float[] xPoints) {
         this.mXVals = arrayToArrayList(xVals);
+        this.mXPoints = arrayToArrayList(xPoints);
         this.mDataSets = new ArrayList<T>();
         init(mDataSets);
     }
@@ -83,10 +90,14 @@ public abstract class ChartData<T extends DataSet<? extends Entry>> {
      * @param xVals The values describing the x-axis. Must be at least as long
      *            as the highest xIndex in the Entry objects across all
      *            DataSets.
+     * @param xPoints The values describing the x-axis. Must be at least as long
+       as the highest xIndex in the Entry objects across all
+       DataSets.
      * @param sets the dataset array
      */
-    public ChartData(ArrayList<String> xVals, ArrayList<T> sets) {
+    public ChartData(ArrayList<String> xVals, ArrayList<Float> xPoints, ArrayList<T> sets) {
         this.mXVals = xVals;
+        this.mXPoints = xPoints;
         this.mDataSets = sets;
 
         init(mDataSets);
@@ -98,10 +109,13 @@ public abstract class ChartData<T extends DataSet<? extends Entry>> {
      * @param xVals The values describing the x-axis. Must be at least as long
      *            as the highest xIndex in the Entry objects across all
      *            DataSets.
+     *
+     * @param xPoints The points used along the x-axis for measuring distance between points
      * @param sets the dataset array
      */
-    public ChartData(String[] xVals, ArrayList<T> sets) {
+    public ChartData(String[] xVals, float[] xPoints, ArrayList<T> sets) {
         this.mXVals = arrayToArrayList(xVals);
+        this.mXPoints = arrayToArrayList(xPoints);
         this.mDataSets = sets;
 
         init(mDataSets);
@@ -116,6 +130,22 @@ public abstract class ChartData<T extends DataSet<? extends Entry>> {
     private ArrayList<String> arrayToArrayList(String[] array) {
 
         ArrayList<String> arraylist = new ArrayList<String>();
+        for (int i = 0; i < array.length; i++) {
+            arraylist.add(array[i]);
+        }
+
+        return arraylist;
+    }
+
+    /**
+     * Turns an array of floats into an arraylist of Floats.
+     *
+     * @param array
+     * @return
+     */
+    private ArrayList<Float> arrayToArrayList(float[] array) {
+
+        ArrayList<Float> arraylist = new ArrayList<Float>();
         for (int i = 0; i < array.length; i++) {
             arraylist.add(array[i]);
         }
@@ -401,12 +431,22 @@ public abstract class ChartData<T extends DataSet<? extends Entry>> {
     }
 
     /**
+     * returns the x-points the chart represents
+     *
+     * @return
+     */
+    public ArrayList<Float> getXPoints() {
+        return mXPoints;
+    }
+
+    /**
      * Adds a new x-value to the chart data.
      * 
      * @param xVal
      */
-    public void addXValue(String xVal) {
+    public void addXValue(String xVal, float xPoint) {
         mXVals.add(xVal);
+        mXPoints.add(xPoint);
     }
 
     /**
@@ -416,6 +456,7 @@ public abstract class ChartData<T extends DataSet<? extends Entry>> {
      */
     public void removeXValue(int index) {
         mXVals.remove(index);
+        mXPoints.remove(index);
     }
 
     /**
@@ -445,14 +486,14 @@ public abstract class ChartData<T extends DataSet<? extends Entry>> {
      * situations.
      * 
      * @param dataSets the DataSet array to search
-     * @param type
-     * @param ignorecase if true, the search is not case-sensitive
+     * @param label
+     * @param ignoreCase if true, the search is not case-sensitive
      * @return
      */
     protected int getDataSetIndexByLabel(ArrayList<T> dataSets, String label,
-            boolean ignorecase) {
+            boolean ignoreCase) {
 
-        if (ignorecase) {
+        if (ignoreCase) {
             for (int i = 0; i < dataSets.size(); i++)
                 if (label.equalsIgnoreCase(dataSets.get(i).getLabel()))
                     return i;
@@ -473,6 +514,16 @@ public abstract class ChartData<T extends DataSet<? extends Entry>> {
      */
     public int getXValCount() {
         return mXVals.size();
+    }
+
+    /**
+     * returns the total number of x-points this ChartData object represents
+     * (the size of the x-points array)
+     *
+     * @return
+     */
+    public int getXPointCount() {
+        return mXPoints.size();
     }
 
     /**
@@ -839,5 +890,24 @@ public abstract class ChartData<T extends DataSet<? extends Entry>> {
         }
 
         return xvals;
+    }
+
+    /**
+     * Generates an x-points array filled with numbers in range specified by the
+     * parameters. Can be used for convenience.
+     *
+     * @param from
+     * @param to
+     * @return
+     */
+    public static ArrayList<Float> generateXPoints(int from, int to) {
+
+        ArrayList<Float> xPoints = new ArrayList<Float>();
+
+        for (int i = from; i < to; i++) {
+            xPoints.add((float)i);
+        }
+
+        return xPoints;
     }
 }

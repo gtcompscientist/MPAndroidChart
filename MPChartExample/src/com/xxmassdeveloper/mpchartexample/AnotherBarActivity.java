@@ -199,8 +199,10 @@ public class AnotherBarActivity extends DemoBase implements OnSeekBarChangeListe
         }
 
         ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Float> xPoints = new ArrayList<Float>();
         for (int i = 0; i < mSeekBarX.getProgress() + 1; i++) {
             xVals.add((int) yVals1.get(i).getVal() + "");
+            xPoints.add((float)i);
         }
 
         BarDataSet set1 = new BarDataSet(yVals1, "Data Set");
@@ -210,7 +212,7 @@ public class AnotherBarActivity extends DemoBase implements OnSeekBarChangeListe
         ArrayList<BarDataSet> dataSets = new ArrayList<BarDataSet>();
         dataSets.add(set1);
 
-        BarData data = new BarData(xVals, dataSets);
+        BarData data = new BarData(xVals, xPoints, dataSets);
 
         mChart.setData(data);
         mChart.invalidate();

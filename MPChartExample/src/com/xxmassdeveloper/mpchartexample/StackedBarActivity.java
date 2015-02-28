@@ -203,8 +203,10 @@ public class StackedBarActivity extends DemoBase implements OnSeekBarChangeListe
         tvY.setText("" + (mSeekBarY.getProgress()));
 
         ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Float> xPoints = new ArrayList<Float>();
         for (int i = 0; i < mSeekBarX.getProgress()+1; i++) {
             xVals.add(mMonths[i % mMonths.length]);
+            xPoints.add((float)i);
         }
 
         ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
@@ -229,7 +231,7 @@ public class StackedBarActivity extends DemoBase implements OnSeekBarChangeListe
         ArrayList<BarDataSet> dataSets = new ArrayList<BarDataSet>();
         dataSets.add(set1);
 
-        BarData data = new BarData(xVals, dataSets);
+        BarData data = new BarData(xVals, xPoints, dataSets);
 
         mChart.setData(data);
         mChart.invalidate();

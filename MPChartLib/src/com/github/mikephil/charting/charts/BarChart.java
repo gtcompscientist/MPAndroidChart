@@ -16,6 +16,8 @@ import com.github.mikephil.charting.renderer.BarChartRenderer;
 import com.github.mikephil.charting.renderer.XAxisRendererBarChart;
 import com.github.mikephil.charting.utils.Highlight;
 
+import java.util.ArrayList;
+
 /**
  * Chart that draws bars.
  * 
@@ -64,7 +66,8 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
         mXAxisRenderer = new XAxisRendererBarChart(mViewPortHandler, mXAxis, mLeftAxisTransformer,
                 this);
 
-        mXChartMin = -0.5f;
+        ArrayList<Float> xPoints = mData.getXPoints();
+        mXChartMin = (xPoints == null || xPoints.size() == 0 ? 0 : xPoints.get(0)) - 0.5f;
     }
 
     @Override
@@ -169,7 +172,6 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
      * Returns null if the Entry could not be found in the charts data.
      * 
      * @param e
-     * @param dataSetIndex
      * @return
      */
     public RectF getBarBounds(BarEntry e) {
@@ -181,7 +183,7 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
 
         float barspace = set.getBarSpace();
         float y = e.getVal();
-        float x = e.getXIndex();
+        float x = getData().getXPoints().get(e.getXIndex());
 
         float spaceHalf = barspace / 2f;
         float left = x - 0.5f + spaceHalf;

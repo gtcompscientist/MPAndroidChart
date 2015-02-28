@@ -124,7 +124,7 @@ public class ListViewMultiChartActivity extends DemoBase {
         sets.add(d1);
         sets.add(d2);
         
-        LineData cd = new LineData(getMonths(), sets);
+        LineData cd = new LineData(getMonths(), getMonthPoints(), sets);
         return cd;
     }
     
@@ -146,7 +146,7 @@ public class ListViewMultiChartActivity extends DemoBase {
         d.setColors(ColorTemplate.VORDIPLOM_COLORS);
         d.setHighLightAlpha(255);
         
-        BarData cd = new BarData(getMonths(), d);
+        BarData cd = new BarData(getMonths(),getMonthPoints(), d);
         return cd;
     }
     
@@ -169,18 +169,29 @@ public class ListViewMultiChartActivity extends DemoBase {
         d.setSliceSpace(2f);
         d.setColors(ColorTemplate.VORDIPLOM_COLORS);
         
-        PieData cd = new PieData(getQuarters(), d);
+        PieData cd = new PieData(getQuarters(), getQuarterPoints(), d);
         return cd;
     }
-    
+
     private ArrayList<String> getQuarters() {
-        
+
         ArrayList<String> q = new ArrayList<String>();
         q.add("1st Quarter");
         q.add("2nd Quarter");
         q.add("3rd Quarter");
         q.add("4th Quarter");
-        
+
+        return q;
+    }
+
+    private ArrayList<Float> getQuarterPoints() {
+
+        ArrayList<Float> q = new ArrayList<Float>();
+        q.add(1f);
+        q.add(2f);
+        q.add(3f);
+        q.add(4f);
+
         return q;
     }
 
@@ -199,6 +210,25 @@ public class ListViewMultiChartActivity extends DemoBase {
         m.add("Okt");
         m.add("Nov");
         m.add("Dec");
+
+        return m;
+    }
+
+    private ArrayList<Float> getMonthPoints() {
+
+        ArrayList<Float> m = new ArrayList<Float>();
+        m.add(1f);
+        m.add(2f);
+        m.add(3f);
+        m.add(4f);
+        m.add(5f);
+        m.add(6f);
+        m.add(7f);
+        m.add(8f);
+        m.add(9f);
+        m.add(10f);
+        m.add(11f);
+        m.add(12f);
 
         return m;
     }

@@ -113,9 +113,9 @@ public class CandleStickChartRenderer extends DataRenderer {
 
         float phase = mAnimator.getPhaseY();
 
-        bodyPoints[0] = e.getXIndex() -0.5f + bodySpace;
+        bodyPoints[0] = mChart.getCandleData().getXPoints().get(e.getXIndex()) -0.5f + bodySpace;
         bodyPoints[1] = e.getClose() * phase;
-        bodyPoints[2] = e.getXIndex() + 0.5f - bodySpace;
+        bodyPoints[2] = mChart.getCandleData().getXPoints().get(e.getXIndex()) + 0.5f - bodySpace;
         bodyPoints[3] = e.getOpen() * phase;
 
         trans.pointValuesToPixel(bodyPoints);
@@ -131,9 +131,9 @@ public class CandleStickChartRenderer extends DataRenderer {
 
         float phase = mAnimator.getPhaseY();
 
-        shadowPoints[0] = e.getXIndex();
+        shadowPoints[0] = mChart.getCandleData().getXPoints().get(e.getXIndex());
         shadowPoints[1] = e.getHigh() * phase;
-        shadowPoints[2] = e.getXIndex();
+        shadowPoints[2] = mChart.getCandleData().getXPoints().get(e.getXIndex());
         shadowPoints[3] = e.getLow() * phase;
 
         trans.pointValuesToPixel(shadowPoints);
@@ -159,7 +159,7 @@ public class CandleStickChartRenderer extends DataRenderer {
                 ArrayList<CandleEntry> entries = dataSet.getYVals();
 
                 float[] positions = trans.generateTransformedValuesCandle(
-                        entries, mAnimator.getPhaseY());
+                        entries, mChart.getCandleData().getXPoints(), mAnimator.getPhaseY());
                 
                 float yOffset = Utils.convertDpToPixel(5f);
 

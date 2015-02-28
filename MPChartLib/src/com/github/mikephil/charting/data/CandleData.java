@@ -8,28 +8,28 @@ public class CandleData extends BarLineScatterCandleData<CandleDataSet> {
         super();
     }
     
-    public CandleData(ArrayList<String> xVals) {
-        super(xVals);
+    public CandleData(ArrayList<String> xVals, ArrayList<Float> xPoints) {
+        super(xVals, xPoints);
     }
     
-    public CandleData(String[] xVals) {
-        super(xVals);
+    public CandleData(String[] xVals, float[] xPoints) {
+        super(xVals, xPoints);
     }
     
-    public CandleData(ArrayList<String> xVals, ArrayList<CandleDataSet> dataSets) {
-        super(xVals, dataSets);
+    public CandleData(ArrayList<String> xVals, ArrayList<Float> xPoints, ArrayList<CandleDataSet> dataSets) {
+        super(xVals, xPoints, dataSets);
     }
 
-    public CandleData(String[] xVals, ArrayList<CandleDataSet> dataSets) {
-        super(xVals, dataSets);
+    public CandleData(String[] xVals, float[] xPoints, ArrayList<CandleDataSet> dataSets) {
+        super(xVals, xPoints, dataSets);
     }
     
-    public CandleData(ArrayList<String> xVals, CandleDataSet dataSet) {
-        super(xVals, toArrayList(dataSet));        
+    public CandleData(ArrayList<String> xVals, ArrayList<Float> xPoints, CandleDataSet dataSet) {
+        super(xVals, xPoints, toArrayList(dataSet));
     }
     
-    public CandleData(String[] xVals, CandleDataSet dataSet) {
-        super(xVals, toArrayList(dataSet));
+    public CandleData(String[] xVals, float[] xPoints, CandleDataSet dataSet) {
+        super(xVals, xPoints, toArrayList(dataSet));
     }
     
     private static ArrayList<CandleDataSet> toArrayList(CandleDataSet dataSet) {

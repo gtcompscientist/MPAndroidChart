@@ -107,7 +107,7 @@ public class InvertedLineChartActivity extends DemoBase implements OnSeekBarChan
 
         // modify the legend ...
         // l.setPosition(LegendPosition.LEFT_OF_CHART);
-        l.setForm(LegendForm.LINE);
+        l.setForm(0, LegendForm.LINE);
 
         // dont forget to refresh the drawing
         mChart.invalidate();
@@ -272,8 +272,10 @@ public class InvertedLineChartActivity extends DemoBase implements OnSeekBarChan
     private void setData(int count, float range) {
 
         ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Float> xPoints = new ArrayList<Float>();
         for (int i = 0; i < count; i++) {
             xVals.add((i % 30) + "/" + (i % 12) + "/14");
+            xPoints.add((float)i);
         }
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
@@ -293,7 +295,7 @@ public class InvertedLineChartActivity extends DemoBase implements OnSeekBarChan
         set1.setCircleSize(4f);
 
         // create a data object with the datasets
-        LineData data = new LineData(xVals, set1);
+        LineData data = new LineData(xVals, xPoints, set1);
 
         // set data
         mChart.setData(data);

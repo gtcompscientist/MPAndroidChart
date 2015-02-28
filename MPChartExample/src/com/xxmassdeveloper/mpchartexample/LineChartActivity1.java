@@ -110,7 +110,7 @@ public class LineChartActivity1 extends DemoBase implements OnSeekBarChangeListe
 
         // modify the legend ...
         // l.setPosition(LegendPosition.LEFT_OF_CHART);
-        l.setForm(LegendForm.LINE);
+        l.setForm(0, LegendForm.LINE);
 
         // // dont forget to refresh the drawing
         // mChart.invalidate();
@@ -286,8 +286,10 @@ public class LineChartActivity1 extends DemoBase implements OnSeekBarChangeListe
     private void setData(int count, float range) {
 
         ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Float> xPoints = new ArrayList<Float>();
         for (int i = 0; i < count; i++) {
             xVals.add((i) + "");
+            xPoints.add((float)i);
         }
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
@@ -320,7 +322,7 @@ public class LineChartActivity1 extends DemoBase implements OnSeekBarChangeListe
         dataSets.add(set1); // add the datasets
 
         // create a data object with the datasets
-        LineData data = new LineData(xVals, dataSets);
+        LineData data = new LineData(xVals, xPoints, dataSets);
 
         LimitLine ll1 = new LimitLine(130f, "Upper Limit");
         ll1.setLineWidth(4f);

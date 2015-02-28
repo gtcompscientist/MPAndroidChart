@@ -251,8 +251,10 @@ public class CubicLineChartActivity extends DemoBase implements OnSeekBarChangeL
     private void setData(int count, float range) {
 
         ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Float> xPoints = new ArrayList<Float>();
         for (int i = 0; i < count; i++) {
             xVals.add((1990 +i) + "");
+            xPoints.add((float)i);
         }
 
         ArrayList<Entry> vals1 = new ArrayList<Entry>();
@@ -280,7 +282,7 @@ public class CubicLineChartActivity extends DemoBase implements OnSeekBarChangeL
         dataSets.add(set1);
 
         // create a data object with the datasets
-        LineData data = new LineData(xVals, dataSets);
+        LineData data = new LineData(xVals, xPoints, dataSets);
 
         // set data
         mChart.setData(data);

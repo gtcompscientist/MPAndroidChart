@@ -9,28 +9,28 @@ public class ScatterData extends BarLineScatterCandleData<ScatterDataSet> {
         super();
     }
     
-    public ScatterData(ArrayList<String> xVals) {
-        super(xVals);
+    public ScatterData(ArrayList<String> xVals, ArrayList<Float> xPoints) {
+        super(xVals, xPoints);
     }
 
-    public ScatterData(String[] xVals) {
-        super(xVals);
+    public ScatterData(String[] xVals, float[] xPoints) {
+        super(xVals, xPoints);
     }
 
-    public ScatterData(ArrayList<String> xVals, ArrayList<ScatterDataSet> dataSets) {
-        super(xVals, dataSets);
+    public ScatterData(ArrayList<String> xVals, ArrayList<Float> xPoints, ArrayList<ScatterDataSet> dataSets) {
+        super(xVals, xPoints, dataSets);
     }
 
-    public ScatterData(String[] xVals, ArrayList<ScatterDataSet> dataSets) {
-        super(xVals, dataSets);
+    public ScatterData(String[] xVals, float[] xPoints, ArrayList<ScatterDataSet> dataSets) {
+        super(xVals, xPoints, dataSets);
     }
 
-    public ScatterData(ArrayList<String> xVals, ScatterDataSet dataSet) {
-        super(xVals, toArrayList(dataSet));
+    public ScatterData(ArrayList<String> xVals, ArrayList<Float> xPoints, ScatterDataSet dataSet) {
+        super(xVals, xPoints, toArrayList(dataSet));
     }
 
-    public ScatterData(String[] xVals, ScatterDataSet dataSet) {
-        super(xVals, toArrayList(dataSet));
+    public ScatterData(String[] xVals, float[] xPoints, ScatterDataSet dataSet) {
+        super(xVals, xPoints, toArrayList(dataSet));
     }
 
     private static ArrayList<ScatterDataSet> toArrayList(ScatterDataSet dataSet) {

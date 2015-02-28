@@ -58,7 +58,7 @@ public class DynamicalAddingActivity extends DemoBase implements OnChartValueSel
             }
 
             // add a new x-value first
-            data.addXValue(set.getEntryCount() + "");
+            data.addXValue(set.getEntryCount() + "", set.getEntryCount());
             data.addEntry(new Entry((float) (Math.random() * 10) + 50f, set.getEntryCount()), 0);
 
             // let the chart know it's data has changed

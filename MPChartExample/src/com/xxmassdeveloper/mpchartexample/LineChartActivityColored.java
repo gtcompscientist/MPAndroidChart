@@ -85,7 +85,7 @@ public class LineChartActivityColored extends DemoBase {
 
         // modify the legend ...
         // l.setPosition(LegendPosition.LEFT_OF_CHART);
-        l.setForm(LegendForm.CIRCLE);
+        l.setForm(0, LegendForm.CIRCLE);
         l.setFormSize(6f);
         l.setTextColor(Color.WHITE);
         l.setTypeface(mTf);
@@ -110,8 +110,10 @@ public class LineChartActivityColored extends DemoBase {
     private LineData getData(int count, float range) {
 
         ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Float> xPoints = new ArrayList<Float>();
         for (int i = 0; i < count; i++) {
             xVals.add(mMonths[i % 12]);
+            xPoints.add((float)i);
         }
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
@@ -137,7 +139,7 @@ public class LineChartActivityColored extends DemoBase {
         dataSets.add(set1); // add the datasets
 
         // create a data object with the datasets
-        LineData data = new LineData(xVals, dataSets);
+        LineData data = new LineData(xVals, xPoints, dataSets);
 
         return data;
     }

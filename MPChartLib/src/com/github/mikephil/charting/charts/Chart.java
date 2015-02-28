@@ -506,7 +506,7 @@ public abstract class Chart<T extends ChartData<? extends DataSet<? extends Entr
      * highlightValues(...), this generates a callback to the
      * OnChartValueSelectedListener.
      *
-     * @param highs
+     * @param high
      */
     public void highlightTouch(Highlight high) {
 
@@ -605,7 +605,7 @@ public abstract class Chart<T extends ChartData<? extends DataSet<? extends Entr
      * Returns the actual position in pixels of the MarkerView for the given
      * Entry in the given DataSet.
      *
-     * @param xIndex
+     * @param e
      * @param dataSetIndex
      * @return
      */

@@ -273,7 +273,6 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends DataSet<? 
      * Returns the distance of a certain point on the chart to the center of the
      * chart.
      * 
-     * @param c the center
      * @param x
      * @param y
      * @return

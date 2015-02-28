@@ -17,20 +17,20 @@ public class PieData extends ChartData<PieDataSet> {
         super();
     }
 
-    public PieData(ArrayList<String> xVals) {
-        super(xVals);
+    public PieData(ArrayList<String> xVals, ArrayList<Float> xPoints) {
+        super(xVals, xPoints);
     }
 
-    public PieData(String[] xVals) {
-        super(xVals);
+    public PieData(String[] xVals, float[] xPoints) {
+        super(xVals, xPoints);
     }
 
-    public PieData(ArrayList<String> xVals, PieDataSet dataSet) {
-        super(xVals, toArrayList(dataSet));
+    public PieData(ArrayList<String> xVals, ArrayList<Float> xPoints, PieDataSet dataSet) {
+        super(xVals, xPoints, toArrayList(dataSet));
     }
 
-    public PieData(String[] xVals, PieDataSet dataSet) {
-        super(xVals, toArrayList(dataSet));
+    public PieData(String[] xVals, float[] xPoints, PieDataSet dataSet) {
+        super(xVals, xPoints, toArrayList(dataSet));
     }
 
     private static ArrayList<PieDataSet> toArrayList(PieDataSet dataSet) {

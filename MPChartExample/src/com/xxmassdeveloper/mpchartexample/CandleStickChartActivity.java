@@ -181,14 +181,16 @@ public class CandleStickChartActivity extends DemoBase implements OnSeekBarChang
         }
 
         ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Float> xPoints = new ArrayList<Float>();
         for (int i = 0; i < prog; i++) {
             xVals.add("" + (1990 + i));
+            xPoints.add((float)i);
         }
 
         CandleDataSet set1 = new CandleDataSet(yVals1, "Data Set");
         set1.setColor(Color.rgb(80, 80, 80));
 
-        CandleData data = new CandleData(xVals, set1);
+        CandleData data = new CandleData(xVals, xPoints, set1);
         
         mChart.setData(data);
         mChart.invalidate();

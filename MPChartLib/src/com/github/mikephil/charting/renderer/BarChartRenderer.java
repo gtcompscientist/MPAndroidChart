@@ -73,7 +73,7 @@ public class BarChartRenderer extends DataRenderer {
             BarEntry e = entries.get(j);
 
             // calculate the x-position, depending on datasetcount
-            float x = e.getXIndex() + j * (mChart.getBarData().getDataSetCount() - 1) + index
+            float x = mChart.getBarData().getXPoints().get(e.getXIndex()) + j * (mChart.getBarData().getDataSetCount() - 1) + index
                     + space * j + space / 2f;
             float y = e.getVal();
 
@@ -362,7 +362,7 @@ public class BarChartRenderer extends DataRenderer {
     }
     
     public float[] getTransformedValues(Transformer trans, ArrayList<BarEntry> entries, int dataSetIndex) {
-        return trans.generateTransformedValuesBarChart(entries, dataSetIndex,
+        return trans.generateTransformedValuesBarChart(entries, mChart.getBarData().getXPoints(), dataSetIndex,
                 mChart.getBarData(),
                 mAnimator.getPhaseY());
     }

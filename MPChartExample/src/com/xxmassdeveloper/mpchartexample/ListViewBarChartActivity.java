@@ -142,7 +142,7 @@ public class ListViewBarChartActivity extends DemoBase {
         ArrayList<BarDataSet> sets = new ArrayList<BarDataSet>();
         sets.add(d);
         
-        BarData cd = new BarData(getMonths(), sets);
+        BarData cd = new BarData(getMonths(), getMonthPoints(), sets);
         return cd;
     }
 
@@ -161,6 +161,25 @@ public class ListViewBarChartActivity extends DemoBase {
         m.add("Okt");
         m.add("Nov");
         m.add("Dec");
+
+        return m;
+    }
+
+    private ArrayList<Float> getMonthPoints() {
+
+        ArrayList<Float> m = new ArrayList<Float>();
+        m.add(1f);
+        m.add(2f);
+        m.add(3f);
+        m.add(4f);
+        m.add(5f);
+        m.add(6f);
+        m.add(7f);
+        m.add(8f);
+        m.add(9f);
+        m.add(10f);
+        m.add(11f);
+        m.add(12f);
 
         return m;
     }

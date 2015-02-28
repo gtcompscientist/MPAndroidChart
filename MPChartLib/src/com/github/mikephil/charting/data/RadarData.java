@@ -14,28 +14,28 @@ public class RadarData extends ChartData<RadarDataSet> {
         super();
     }
     
-    public RadarData(ArrayList<String> xVals) {
-        super(xVals);
+    public RadarData(ArrayList<String> xVals, ArrayList<Float> xPoints) {
+        super(xVals, xPoints);
     }
     
-    public RadarData(String[] xVals) {
-        super(xVals);
+    public RadarData(String[] xVals, float[] xPoints) {
+        super(xVals, xPoints);
     }
     
-    public RadarData(ArrayList<String> xVals, ArrayList<RadarDataSet> dataSets) {
-        super(xVals, dataSets);
+    public RadarData(ArrayList<String> xVals, ArrayList<Float> xPoints, ArrayList<RadarDataSet> dataSets) {
+        super(xVals, xPoints, dataSets);
     }
 
-    public RadarData(String[] xVals, ArrayList<RadarDataSet> dataSets) {
-        super(xVals, dataSets);
+    public RadarData(String[] xVals, float[] xPoints, ArrayList<RadarDataSet> dataSets) {
+        super(xVals, xPoints, dataSets);
     }
 
-    public RadarData(ArrayList<String> xVals, RadarDataSet dataSet) {
-        super(xVals, toArrayList(dataSet));
+    public RadarData(ArrayList<String> xVals, ArrayList<Float> xPoints, RadarDataSet dataSet) {
+        super(xVals, xPoints, toArrayList(dataSet));
     }
 
-    public RadarData(String[] xVals, RadarDataSet dataSet) {
-        super(xVals, toArrayList(dataSet));
+    public RadarData(String[] xVals, float[] xPoints, RadarDataSet dataSet) {
+        super(xVals, xPoints, toArrayList(dataSet));
     }
     
     private static ArrayList<RadarDataSet> toArrayList(RadarDataSet dataSet) {

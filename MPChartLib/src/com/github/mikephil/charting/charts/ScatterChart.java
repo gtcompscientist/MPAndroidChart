@@ -8,6 +8,8 @@ import com.github.mikephil.charting.data.ScatterData;
 import com.github.mikephil.charting.interfaces.ScatterDataProvider;
 import com.github.mikephil.charting.renderer.ScatterChartRenderer;
 
+import java.util.ArrayList;
+
 /**
  * The ScatterChart. Draws dots, triangles, squares and custom shapes into the
  * chartview.
@@ -38,7 +40,8 @@ public class ScatterChart extends BarLineChartBase<ScatterData> implements Scatt
         super.init();
 
         mRenderer = new ScatterChartRenderer(this, mAnimator, mViewPortHandler);
-        mXChartMin = -0.5f;
+        ArrayList<Float> xPoints = mData.getXPoints();
+        mXChartMin = (xPoints == null || xPoints.size() == 0 ? 0 : xPoints.get(0)) - 0.5f;
     }
 
 //    @Override

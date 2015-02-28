@@ -41,8 +41,8 @@ public abstract class SimpleFragment extends Fragment {
             ds.setColors(ColorTemplate.VORDIPLOM_COLORS);
             sets.add(ds);
         }
-        
-        BarData d = new BarData(ChartData.generateXVals(0, count), sets);
+
+        BarData d = new BarData(ChartData.generateXVals(0, count), ChartData.generateXPoints(0, count), sets);
         return d;
     }
     
@@ -68,7 +68,7 @@ public abstract class SimpleFragment extends Fragment {
             sets.add(ds);
         }
         
-        ScatterData d = new ScatterData(ChartData.generateXVals(0, count), sets);
+        ScatterData d = new ScatterData(ChartData.generateXVals(0, count), ChartData.generateXPoints(0, count), sets);
         return d;
     }
     
@@ -82,15 +82,20 @@ public abstract class SimpleFragment extends Fragment {
         
         ArrayList<Entry> entries1 = new ArrayList<Entry>();
         ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Float> xPoints = new ArrayList<Float>();
         
         xVals.add("Quarter 1");
+        xPoints.add(1f);
         xVals.add("Quarter 2");
+        xPoints.add(2f);
         xVals.add("Quarter 3");
+        xPoints.add(3f);
         xVals.add("Quarter 4");
-        
+        xPoints.add(4f);
+
         for(int i = 0; i < count; i++) {
             xVals.add("entry" + (i+1));
-    
+            xPoints.add((float)(i+1));
             entries1.add(new Entry((float) (Math.random() * 60) + 40, i));
         }
         
@@ -98,7 +103,7 @@ public abstract class SimpleFragment extends Fragment {
         ds1.setColors(ColorTemplate.VORDIPLOM_COLORS);
         ds1.setSliceSpace(2f);
         
-        PieData d = new PieData(xVals, ds1);
+        PieData d = new PieData(xVals, xPoints, ds1);
         return d;
     }
     
@@ -134,7 +139,7 @@ public abstract class SimpleFragment extends Fragment {
         
         int max = Math.max(sets.get(0).getEntryCount(), sets.get(1).getEntryCount());
         
-        LineData d = new LineData(ChartData.generateXVals(0, max),  sets);
+        LineData d = new LineData(ChartData.generateXVals(0, max), ChartData.generateXPoints(0, max),  sets);
         return d;
     }
     
@@ -173,7 +178,7 @@ public abstract class SimpleFragment extends Fragment {
         sets.add(ds3);
         sets.add(ds4);
         
-        LineData d = new LineData(ChartData.generateXVals(0, ds1.getEntryCount()), sets);
+        LineData d = new LineData(ChartData.generateXVals(0, ds1.getEntryCount()), ChartData.generateXPoints(0, ds1.getEntryCount()), sets);
         return d;
     }
     

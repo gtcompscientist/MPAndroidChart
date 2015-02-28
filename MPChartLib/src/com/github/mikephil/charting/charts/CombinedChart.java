@@ -16,6 +16,8 @@ import com.github.mikephil.charting.interfaces.ScatterDataProvider;
 import com.github.mikephil.charting.renderer.CombinedChartRenderer;
 import com.github.mikephil.charting.utils.FillFormatter;
 
+import java.util.ArrayList;
+
 /**
  * This chart class allows the combination of lines, bars, scatter and candle
  * data all displayed in one chart area.
@@ -53,8 +55,9 @@ public class CombinedChart extends BarLineChartBase<CombinedData> implements Lin
         super.calcMinMax();
 
         if (getBarData() != null) {
-            mXChartMin = -0.5f;
-            mXChartMax = mData.getXVals().size() - 0.5f;
+            ArrayList<Float> xPoints = mData.getXPoints();
+            mXChartMin = (xPoints == null || xPoints.size() == 0 ? 0 : xPoints.get(0)) - 0.5f;
+            mXChartMax = mData.getXPoints().get(mData.getXPointCount() - 1) - 0.5f;
             mDeltaX = Math.abs(mXChartMax - mXChartMin);
         }
     }
@@ -67,8 +70,9 @@ public class CombinedChart extends BarLineChartBase<CombinedData> implements Lin
 
     public void setFillFormatter(FillFormatter formatter) {
 
+        //CSA - 2/27/15 - Null formatter passed in wasn't setting the formatter properly
         if (formatter == null)
-            formatter = new DefaultFillFormatter();
+            mFillFormatter = new DefaultFillFormatter();
         else
             mFillFormatter = formatter;
     }

@@ -413,18 +413,18 @@ public class LegendRenderer extends Renderer {
 
         mLegendFormPaint.setColor(legend.getColors()[index]);
 
-        float formsize = legend.getFormSize();
-        float half = formsize / 2f;
+        float formSize = legend.getFormSize();
+        float half = formSize / 2f;
 
-        switch (legend.getForm()) {
+        switch (legend.getForm(index)) {
             case CIRCLE:
                 c.drawCircle(x + half, y, half, mLegendFormPaint);
                 break;
             case SQUARE:
-                c.drawRect(x, y - half, x + formsize, y + half, mLegendFormPaint);
+                c.drawRect(x, y - half, x + formSize, y + half, mLegendFormPaint);
                 break;
             case LINE:
-                c.drawLine(x, y, x + formsize, y, mLegendFormPaint);
+                c.drawLine(x, y, x + formSize, y, mLegendFormPaint);
                 break;
         }
     }

@@ -45,7 +45,7 @@ public class ScatterChartRenderer extends DataRenderer {
 
         Transformer trans = mChart.getTransformer(dataSet.getAxisDependency());
 
-        float[] valuePoints = trans.generateTransformedValuesScatter(entries,
+        float[] valuePoints = trans.generateTransformedValuesScatter(entries, mChart.getScatterData().getXPoints(),
                 mAnimator.getPhaseY());
 
         ScatterShape shape = dataSet.getScatterShape();
@@ -129,7 +129,7 @@ public class ScatterChartRenderer extends DataRenderer {
                 ArrayList<Entry> entries = dataSet.getYVals();
 
                 float[] positions = mChart.getTransformer(dataSet.getAxisDependency())
-                        .generateTransformedValuesScatter(entries,
+                        .generateTransformedValuesScatter(entries, mChart.getScatterData().getXPoints(),
                                 mAnimator.getPhaseY());
 
                 float shapeSize = dataSet.getScatterShapeSize();

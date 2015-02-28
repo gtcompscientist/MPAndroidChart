@@ -182,10 +182,11 @@ public class PieChartActivity extends DemoBase implements OnSeekBarChangeListene
         }
 
         ArrayList<String> xVals = new ArrayList<String>();
-
-        for (int i = 0; i < count + 1; i++)
+        ArrayList<Float> xPoints = new ArrayList<Float>();
+        for (int i = 0; i < count + 1; i++) {
             xVals.add(mParties[i % mParties.length]);
-
+            xPoints.add((float)i);
+        }
         PieDataSet dataSet = new PieDataSet(yVals1, "Election Results");
         dataSet.setSliceSpace(3f);
 
@@ -212,7 +213,7 @@ public class PieChartActivity extends DemoBase implements OnSeekBarChangeListene
 
         dataSet.setColors(colors);
 
-        PieData data = new PieData(xVals, dataSet);
+        PieData data = new PieData(xVals, xPoints, dataSet);
         mChart.setData(data);
 
         // undo all highlights

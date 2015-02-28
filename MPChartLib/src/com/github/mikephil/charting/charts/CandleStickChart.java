@@ -8,6 +8,8 @@ import com.github.mikephil.charting.data.CandleData;
 import com.github.mikephil.charting.interfaces.CandleDataProvider;
 import com.github.mikephil.charting.renderer.CandleStickChartRenderer;
 
+import java.util.ArrayList;
+
 /**
  * Financial chart type that draws candle-sticks.
  * 
@@ -32,7 +34,8 @@ public class CandleStickChart extends BarLineChartBase<CandleData> implements Ca
         super.init();
         
         mRenderer = new CandleStickChartRenderer(this, mAnimator, mViewPortHandler);
-        mXChartMin = -0.5f;
+        ArrayList<Float> xPoints = mData.getXPoints();
+        mXChartMin = (xPoints == null || xPoints.size() == 0 ? 0 : xPoints.get(0)) - 0.5f;
     }
 
     @Override

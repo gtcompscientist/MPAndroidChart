@@ -101,7 +101,7 @@ public class Transformer {
      * @param entries
      * @return
      */
-    public float[] generateTransformedValuesScatter(ArrayList<? extends Entry> entries,
+    public float[] generateTransformedValuesScatter(ArrayList<? extends Entry> entries, ArrayList<Float> xPoints,
             float phaseY) {
 
         float[] valuePoints = new float[entries.size() * 2];
@@ -111,7 +111,7 @@ public class Transformer {
             Entry e = entries.get(j / 2);
 
             if (e != null) {
-                valuePoints[j] = e.getXIndex();
+                valuePoints[j] = xPoints.get(e.getXIndex());
                 valuePoints[j + 1] = e.getVal() * phaseY;
             }
         }
@@ -128,7 +128,7 @@ public class Transformer {
      * @param entries
      * @return
      */
-    public float[] generateTransformedValuesLine(ArrayList<? extends Entry> entries,
+    public float[] generateTransformedValuesLine(ArrayList<? extends Entry> entries, ArrayList<Float> xPoints,
             float phaseY) {
 
         float[] valuePoints = new float[entries.size() * 2];
@@ -138,7 +138,7 @@ public class Transformer {
             Entry e = entries.get(j / 2);
 
             if (e != null) {
-                valuePoints[j] = e.getXIndex();
+                valuePoints[j] = xPoints.get(e.getXIndex());
                 valuePoints[j + 1] = e.getVal() * phaseY;
             }
         }
@@ -155,7 +155,7 @@ public class Transformer {
      * @param entries
      * @return
      */
-    public float[] generateTransformedValuesCandle(ArrayList<CandleEntry> entries,
+    public float[] generateTransformedValuesCandle(ArrayList<CandleEntry> entries, ArrayList<Float> xPoints,
             float phaseY) {
 
         float[] valuePoints = new float[entries.size() * 2];
@@ -165,7 +165,7 @@ public class Transformer {
             CandleEntry e = entries.get(j / 2);
 
             if (e != null) {
-                valuePoints[j] = e.getXIndex();
+                valuePoints[j] = xPoints.get(e.getXIndex());
                 valuePoints[j + 1] = e.getHigh() * phaseY;
             }
         }
@@ -183,7 +183,7 @@ public class Transformer {
      * @param dataSet the dataset index
      * @return
      */
-    public float[] generateTransformedValuesBarChart(ArrayList<? extends Entry> entries,
+    public float[] generateTransformedValuesBarChart(ArrayList<? extends Entry> entries, ArrayList<Float> xPoints,
             int dataSet, BarData bd, float phaseY) {
 
         float[] valuePoints = new float[entries.size() * 2];
@@ -196,7 +196,7 @@ public class Transformer {
             Entry e = entries.get(j / 2);
 
             // calculate the x-position, depending on datasetcount
-            float x = e.getXIndex() + (j / 2 * (setCount - 1)) + dataSet + space * (j / 2)
+            float x = xPoints.get(e.getXIndex()) + (j / 2 * (setCount - 1)) + dataSet + space * (j / 2)
                     + space / 2f;
             float y = e.getVal();
 
@@ -217,7 +217,7 @@ public class Transformer {
      * @param dataSet the dataset index
      * @return
      */
-    public float[] generateTransformedValuesHorizontalBarChart(ArrayList<? extends Entry> entries,
+    public float[] generateTransformedValuesHorizontalBarChart(ArrayList<? extends Entry> entries, ArrayList<Float> xPoints,
             int dataSet, BarData bd, float phaseY) {
 
         float[] valuePoints = new float[entries.size() * 2];
@@ -230,7 +230,7 @@ public class Transformer {
             Entry e = entries.get(j / 2);
 
             // calculate the x-position, depending on datasetcount
-            float x = e.getXIndex() + (j / 2 * (setCount - 1)) + dataSet + space * (j / 2)
+            float x = xPoints.get(e.getXIndex()) + (j / 2 * (setCount - 1)) + dataSet + space * (j / 2)
                     + space / 2f ;
             float y = e.getVal();
 

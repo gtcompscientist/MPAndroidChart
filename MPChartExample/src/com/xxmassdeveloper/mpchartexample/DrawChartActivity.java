@@ -82,8 +82,10 @@ public class DrawChartActivity extends DemoBase implements OnChartValueSelectedL
 
     private void initWithDummyData() {
         ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Float> xPoints = new ArrayList<Float>();
         for (int i = 0; i < 24; i++) {
             xVals.add((i) + ":00");
+            xPoints.add((float)i);
         }
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
@@ -97,7 +99,7 @@ public class DrawChartActivity extends DemoBase implements OnChartValueSelectedL
         dataSets.add(set1); // add the datasets
 
         // create a data object with the datasets
-        LineData data = new LineData(xVals, dataSets);
+        LineData data = new LineData(xVals, xPoints, dataSets);
 
         mChart.setData(data);
     }

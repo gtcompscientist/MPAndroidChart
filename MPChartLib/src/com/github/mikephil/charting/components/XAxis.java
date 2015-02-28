@@ -41,6 +41,13 @@ public class XAxis extends AxisBase {
     public int mAxisLabelModulus = 1;
 
     /**
+     * Indicates whether show a specific number of labels for the axis, overrides the label modulus
+     *
+     * @author Charles Anderson - 2/24/15
+     */
+    public int mAxisLabelCount = 0;
+
+    /**
      * the modulus that indicates if a value at a specified index in an
      * array(list) for the y-axis-labels is drawn or not. If index % modulus ==
      * 0 DRAW, else dont draw. THIS IS ONLY FOR HORIZONTAL BARCHART.
@@ -121,7 +128,6 @@ public class XAxis extends AxisBase {
      * Returns the space (in characters) that should be left out between the
      * x-axis labels
      * 
-     * @param space
      */
     public int getSpaceBetweenLabels() {
         return mSpaceBetweenLabels;

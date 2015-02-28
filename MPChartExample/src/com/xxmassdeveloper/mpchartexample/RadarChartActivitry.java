@@ -173,9 +173,12 @@ public class RadarChartActivitry extends DemoBase {
         }
 
         ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Float> xPoints = new ArrayList<Float>();
 
-        for (int i = 0; i < cnt; i++)
+        for (int i = 0; i < cnt; i++) {
             xVals.add(mParties[i % mParties.length]);
+            xPoints.add((float) i);
+        }
 
         RadarDataSet set1 = new RadarDataSet(yVals1, "Set 1");
         set1.setColor(ColorTemplate.VORDIPLOM_COLORS[0]);
@@ -191,7 +194,7 @@ public class RadarChartActivitry extends DemoBase {
         sets.add(set1);
         sets.add(set2);
 
-        RadarData data = new RadarData(xVals, sets);
+        RadarData data = new RadarData(xVals, xPoints, sets);
 
         mChart.setData(data);
 

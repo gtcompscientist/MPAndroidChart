@@ -50,7 +50,7 @@ public class CombinedChartActivity extends DemoBase {
         XAxis xAxis = mChart.getXAxis();
         xAxis.setPosition(XAxisPosition.BOTH_SIDED);
 
-        CombinedData data = new CombinedData(mMonths);
+        CombinedData data = new CombinedData(mMonths, mMonthPoints);
 
         data.setData(generateLineData());
         data.setData(generateBarData());

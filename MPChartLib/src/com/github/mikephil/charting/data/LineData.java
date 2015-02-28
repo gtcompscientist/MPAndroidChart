@@ -9,28 +9,28 @@ public class LineData extends BarLineScatterCandleData<LineDataSet> {
         super();
     }
 
-    public LineData(ArrayList<String> xVals) {
-        super(xVals);
+    public LineData(ArrayList<String> xVals, ArrayList<Float> xPoints) {
+        super(xVals, xPoints);
     }
 
-    public LineData(String[] xVals) {
-        super(xVals);
+    public LineData(String[] xVals, float[] xPoints) {
+        super(xVals, xPoints);
     }
 
-    public LineData(ArrayList<String> xVals, ArrayList<LineDataSet> dataSets) {
-        super(xVals, dataSets);
+    public LineData(ArrayList<String> xVals, ArrayList<Float> xPoints, ArrayList<LineDataSet> dataSets) {
+        super(xVals, xPoints, dataSets);
     }
 
-    public LineData(String[] xVals, ArrayList<LineDataSet> dataSets) {
-        super(xVals, dataSets);
+    public LineData(String[] xVals, float[] xPoints, ArrayList<LineDataSet> dataSets) {
+        super(xVals, xPoints, dataSets);
     }
 
-    public LineData(ArrayList<String> xVals, LineDataSet dataSet) {
-        super(xVals, toArrayList(dataSet));
+    public LineData(ArrayList<String> xVals, ArrayList<Float> xPoints, LineDataSet dataSet) {
+        super(xVals, xPoints, toArrayList(dataSet));
     }
 
-    public LineData(String[] xVals, LineDataSet dataSet) {
-        super(xVals, toArrayList(dataSet));
+    public LineData(String[] xVals, float[] xPoints, LineDataSet dataSet) {
+        super(xVals, xPoints, toArrayList(dataSet));
     }
 
     private static ArrayList<LineDataSet> toArrayList(LineDataSet dataSet) {

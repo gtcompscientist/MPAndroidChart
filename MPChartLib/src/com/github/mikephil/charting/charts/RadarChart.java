@@ -99,7 +99,7 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
     @Override
     protected float[] getMarkerPosition(Entry e, int dataSetIndex) {
 
-        float angle = getSliceAngle() * e.getXIndex() + getRotationAngle();
+        float angle = getSliceAngle() * mData.getXPoints().get(e.getXIndex()) + getRotationAngle();
         float val = e.getVal() * getFactor();
         PointF c = getCenterOffsets();
 

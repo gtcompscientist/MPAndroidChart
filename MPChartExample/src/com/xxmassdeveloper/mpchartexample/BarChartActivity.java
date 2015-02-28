@@ -111,7 +111,7 @@ public class BarChartActivity extends DemoBase implements OnSeekBarChangeListene
 
         Legend l = mChart.getLegend();
         l.setPosition(LegendPosition.BELOW_CHART_LEFT);
-        l.setForm(LegendForm.SQUARE);
+        l.setForm(0, LegendForm.SQUARE);
         l.setFormSize(9f);
         l.setTextSize(11f);
         l.setXEntrySpace(4f);
@@ -241,8 +241,10 @@ public class BarChartActivity extends DemoBase implements OnSeekBarChangeListene
     private void setData(int count, float range) {
 
         ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Float> xPoints = new ArrayList<Float>();
         for (int i = 0; i < count; i++) {
             xVals.add(mMonths[i % 12]);
+            xPoints.add((float)i);
         }
 
         ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
@@ -259,7 +261,7 @@ public class BarChartActivity extends DemoBase implements OnSeekBarChangeListene
         ArrayList<BarDataSet> dataSets = new ArrayList<BarDataSet>();
         dataSets.add(set1);
 
-        BarData data = new BarData(xVals, dataSets);
+        BarData data = new BarData(xVals, xPoints, dataSets);
 
         mChart.setData(data);
     }

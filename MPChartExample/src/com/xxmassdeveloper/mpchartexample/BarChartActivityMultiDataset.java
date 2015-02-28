@@ -186,8 +186,10 @@ public class BarChartActivityMultiDataset extends DemoBase implements OnSeekBarC
         tvY.setText("" + (mSeekBarY.getProgress()));
 
         ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Float> xPoints = new ArrayList<Float>();
         for (int i = 0; i < mSeekBarX.getProgress(); i++) {
             xVals.add((i + 1990) + "");
+            xPoints.add((float)i);
         }
 
         ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
@@ -226,7 +228,7 @@ public class BarChartActivityMultiDataset extends DemoBase implements OnSeekBarC
         dataSets.add(set2);
         dataSets.add(set3);
 
-        BarData data = new BarData(xVals, dataSets);
+        BarData data = new BarData(xVals, xPoints, dataSets);
 
         // add space between the dataset groups in percent of bar-width
         data.setGroupSpace(80f);

@@ -20,12 +20,12 @@ public class CombinedData extends BarLineScatterCandleData<BarLineScatterCandleD
         super();
     }
 
-    public CombinedData(ArrayList<String> xVals) {
-        super(xVals);
+    public CombinedData(ArrayList<String> xVals, ArrayList<Float> xPoints) {
+        super(xVals, xPoints);
     }
 
-    public CombinedData(String[] xVals) {
-        super(xVals);
+    public CombinedData(String[] xVals, float[] xPoints) {
+        super(xVals, xPoints);
     }
 
     public void setData(LineData data) {
