@@ -65,6 +65,7 @@ public abstract class ChartData<T extends DataSet<? extends Entry>> {
      * @param xPoints
      */
     public ChartData(ArrayList<String> xVals, ArrayList<Float> xPoints) {
+        this.mXVals = xVals;
         this.mXPoints = xPoints;
         this.mDataSets = new ArrayList<T>();
         init(mDataSets);

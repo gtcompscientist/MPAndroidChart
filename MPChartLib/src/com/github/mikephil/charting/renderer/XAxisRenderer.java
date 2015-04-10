@@ -4,6 +4,7 @@ package com.github.mikephil.charting.renderer;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint.Align;
+import android.util.Log;
 
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.XAxis.XAxisPosition;
@@ -26,7 +27,7 @@ public class XAxisRenderer extends AxisRenderer {
         mAxisPaint.setTextSize(Utils.convertDpToPixel(10f));
     }
 
-    public void computeAxis(float xValAverageLength, ArrayList<String> xValues) {
+    public void computeAxis(float xValAverageLength, ArrayList<String> xValues, ArrayList<Float> xPoints) {
 
         StringBuffer a = new StringBuffer();
 
@@ -40,6 +41,7 @@ public class XAxisRenderer extends AxisRenderer {
         mXAxis.mLabelWidth = Utils.calcTextWidth(mAxisPaint, a.toString());
         mXAxis.mLabelHeight = Utils.calcTextHeight(mAxisPaint, "Q");
         mXAxis.setValues(xValues);
+        mXAxis.setPoints(xPoints);
     }
 
     @Override
@@ -117,9 +119,16 @@ public class XAxisRenderer extends AxisRenderer {
                 0f, 0f
         };
 
+        Float mAxisStep = null;
+        Float mAxisMin = null;
+        if (mXAxis.getPoints() != null) {
+            ArrayList<Float> points = mXAxis.getPoints();
+            mAxisMin = points.get(0);
+            mAxisStep = (points.get(points.size() - 1) - mAxisMin) / points.size();
+        }
         for (int i = 0; i < mXAxis.getValues().size(); i += mXAxis.mAxisLabelModulus) {
-
-            position[0] = i;
+            float posFloat = mAxisStep == null ? i : (mAxisMin + (i * mAxisStep));
+            position[0] = posFloat;
 
             mTrans.pointValuesToPixel(position);
 
@@ -164,9 +173,16 @@ public class XAxisRenderer extends AxisRenderer {
 
         mGridPaint.setColor(mXAxis.getGridColor());
 
+        Float mAxisStep = null;
+        Float mAxisMin = null;
+        if (mXAxis.getPoints() != null) {
+            ArrayList<Float> points = mXAxis.getPoints();
+            mAxisMin = points.get(0);
+            mAxisStep = (points.get(points.size() - 1) - mAxisMin) / points.size();
+        }
         for (int i = 0; i < mXAxis.getValues().size(); i += mXAxis.mAxisLabelModulus) {
 
-            position[0] = i;
+            position[0] = mAxisStep == null ? i : (mAxisMin + (i * mAxisStep));
 
             mTrans.pointValuesToPixel(position);
 

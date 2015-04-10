@@ -4,6 +4,7 @@ package com.github.mikephil.charting.utils;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.util.Log;
 
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.CandleEntry;
@@ -35,8 +36,11 @@ public class Transformer {
     /**
      * Prepares the matrix that transforms values to pixels. Calculates the
      * scale factors from the charts size and offsets.
-     * 
-     * @param chart
+     *
+     * @param xChartMin
+     * @param deltaX
+     * @param deltaY
+     * @param yChartMin
      */
     public void prepareMatrixValuePx(float xChartMin, float deltaX, float deltaY, float yChartMin) {
 
@@ -68,22 +72,36 @@ public class Transformer {
 
     /**
      * Prepares the matrix that contains all offsets.
-     * 
-     * @param chart
+     *
+     * @param invertedX
+     * @param invertedY
      */
-    public void prepareMatrixOffset(boolean inverted) {
+    public void prepareMatrixOffset(boolean invertedX, boolean invertedY) {
 
         mMatrixOffset.reset();
 
         // offset.postTranslate(mOffsetLeft, getHeight() - mOffsetBottom);
 
-        if (!inverted)
-            mMatrixOffset.postTranslate(mViewPortHandler.offsetLeft(),
-                    mViewPortHandler.getChartHeight() - mViewPortHandler.offsetBottom());
-        else {
-            mMatrixOffset
-                    .setTranslate(mViewPortHandler.offsetLeft(), -mViewPortHandler.offsetTop());
-            mMatrixOffset.postScale(1.0f, -1.0f);
+        if (!invertedX) {
+            if (!invertedY)
+                mMatrixOffset.postTranslate(mViewPortHandler.offsetLeft(),
+                        mViewPortHandler.getChartHeight() - mViewPortHandler.offsetBottom());
+            else {
+                mMatrixOffset
+                        .setTranslate(mViewPortHandler.offsetLeft(), -mViewPortHandler.offsetTop());
+                mMatrixOffset.postScale(1.0f, -1.0f);
+            }
+        } else {
+            if (!invertedY) {
+                mMatrixOffset.preScale(-1.0f, 1.0f);
+                mMatrixOffset.postTranslate(mViewPortHandler.getChartWidth() - mViewPortHandler.offsetRight(),
+                        mViewPortHandler.getChartHeight() - mViewPortHandler.offsetBottom());
+            } else {
+                mMatrixOffset.preScale(-1.0f, 1.0f);
+                mMatrixOffset
+                        .setTranslate(mViewPortHandler.getChartWidth() - mViewPortHandler.offsetRight(), -mViewPortHandler.offsetTop());
+                mMatrixOffset.postScale(1.0f, -1.0f);
+            }
         }
 
         // mMatrixOffset.set(offset);

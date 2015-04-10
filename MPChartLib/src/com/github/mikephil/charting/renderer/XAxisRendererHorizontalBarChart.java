@@ -21,11 +21,12 @@ public class XAxisRendererHorizontalBarChart extends XAxisRendererBarChart {
     }
     
     @Override
-    public void computeAxis(float xValAverageLength, ArrayList<String> xValues) {
+    public void computeAxis(float xValAverageLength, ArrayList<String> xValues, ArrayList<Float> xPoints) {
         
         mAxisPaint.setTypeface(mXAxis.getTypeface());
         mAxisPaint.setTextSize(mXAxis.getTextSize());
         mXAxis.setValues(xValues);
+        mXAxis.setPoints(xPoints);
 
         String longest = mXAxis.getLongestLabel();
         mXAxis.mLabelWidth = (int) (Utils.calcTextWidth(mAxisPaint, longest) + mXAxis.getXOffset() * 3.5f);

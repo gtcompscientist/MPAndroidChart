@@ -233,8 +233,8 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleData<? exte
 
     protected void prepareOffsetMatrix() {
 
-        mRightAxisTransformer.prepareMatrixOffset(mAxisRight.isInverted());
-        mLeftAxisTransformer.prepareMatrixOffset(mAxisLeft.isInverted());
+        mRightAxisTransformer.prepareMatrixOffset(mXAxis.isInverted(), mAxisRight.isInverted());
+        mLeftAxisTransformer.prepareMatrixOffset(mXAxis.isInverted(), mAxisLeft.isInverted());
     }
 
     @Override
@@ -254,7 +254,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleData<? exte
         mAxisRendererLeft.computeAxis(mAxisLeft.mAxisMinimum, mAxisLeft.mAxisMaximum);
         mAxisRendererRight.computeAxis(mAxisRight.mAxisMinimum, mAxisRight.mAxisMaximum);
 
-        mXAxisRenderer.computeAxis(mData.getXValAverageLength(), mData.getXVals());
+        mXAxisRenderer.computeAxis(mData.getXValAverageLength(), mData.getXVals(), mData.getXPoints());
 
         mLegend = mLegendRenderer.computeLegend(mData, mLegend);
         // prepareLegend();

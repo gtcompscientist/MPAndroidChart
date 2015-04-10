@@ -15,6 +15,9 @@ public class XAxis extends AxisBase {
     /** the arraylist containing all the x-axis labels */
     protected ArrayList<String> mValues = new ArrayList<String>();
 
+    /** the arraylist containing all the x-axis points */
+    protected ArrayList<Float> mPoints = new ArrayList<Float>();
+
     /**
      * width of the x-axis labels in pixels - this is calculated by the
      * calcTextWidth() method of the utils
@@ -53,6 +56,9 @@ public class XAxis extends AxisBase {
      * 0 DRAW, else dont draw. THIS IS ONLY FOR HORIZONTAL BARCHART.
      */
     public int mYAxisLabelModulus = 1;
+
+    /** flag that indicates if the axis is inverted or not */
+    protected boolean mInverted = false;
 
     /**
      * if set to true, the chart will avoid that the first and last label entry
@@ -170,6 +176,24 @@ public class XAxis extends AxisBase {
         return mValues;
     }
     
+
+    /**
+     * Sets the points for this axis.
+     *
+     * @param points
+     */
+    public void setPoints(ArrayList<Float> points) {
+        mPoints = points;
+    }
+
+    /**
+     * Returns the points for this axis.
+     *
+     * @return
+     */
+    public ArrayList<Float> getPoints() {
+        return mPoints;
+    }
     @Override
     public String getLongestLabel() {
 
@@ -184,4 +208,24 @@ public class XAxis extends AxisBase {
 
         return longest;
     }
+
+    /**
+     * If this is set to true, the y-axis is inverted which means that low
+     * values are on top of the chart, high values on bottom.
+     *
+     * @param enabled
+     */
+    public void setInvertAxis(boolean enabled) {
+        mInverted = enabled;
+    }
+
+    /**
+     * If this returns true, the y-axis is inverted.
+     *
+     * @return
+     */
+    public boolean isInverted() {
+        return mInverted;
+    }
+
 }

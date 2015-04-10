@@ -73,7 +73,7 @@ public class LegendRenderer extends Renderer {
             int entryCount = dataSet.getEntryCount();
 
             // if we have a barchart with stacked bars
-            if (dataSet instanceof BarDataSet && ((BarDataSet) dataSet).getStackSize() > 1) {
+            if (dataSet instanceof BarDataSet && (((BarDataSet) dataSet).getStackSize() > 1)) {
 
                 BarDataSet bds = (BarDataSet) dataSet;
                 String[] sLabels = bds.getStackLabels();
@@ -105,10 +105,10 @@ public class LegendRenderer extends Renderer {
 
             } else { // all others
 
-                for (int j = 0; j < clrs.size() && j < entryCount; j++) {
+                for (int j = 0; j < clrs.size() && j <= entryCount; j++) {
 
                     // if multiple colors are set for a DataSet, group them
-                    if (j < clrs.size() - 1 && j < entryCount - 1) {
+                    if (j < clrs.size() - 1 && j < entryCount) {
 
                         labels.add(null);
                     } else { // add label to the last entry
